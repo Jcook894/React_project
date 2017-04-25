@@ -16,7 +16,6 @@ export default class App extends Component {
       <div style={headerStyle}>
         <h1>Bar Search</h1>
         <SearchBar />
-
         </div>
 
     );
