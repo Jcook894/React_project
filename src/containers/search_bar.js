@@ -35,7 +35,7 @@ class SearchBar extends Component{
         <label>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <button type="submit"> Search for a Bar !</button>
+        <button type="submit" className="btn btn-primary"> Search for a Bar !</button>
       </form>
   );
  }
