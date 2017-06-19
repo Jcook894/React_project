@@ -6,12 +6,16 @@ const inputStyle = {
 }
 
 class SearchBar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {value: ''};
+  }
   render(){
     return(
-      <div style={inputStyle}>
+      <form onstyle={inputStyle}>
         <input value="Hello"> </input>
         <button> Search for a Bar !</button>
-      </div>
+      </form>
   );
  }
 }
