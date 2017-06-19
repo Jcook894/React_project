@@ -9,12 +9,30 @@ class SearchBar extends Component{
   constructor(props){
     super(props);
     this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+  }
+
+  handleChange(event){
+    this.setState({value: event.target.value});
+
+  }
+
+  handleSubmit(event){
+    console.log("you have searched in the location of" + this.state.value);
+
+
   }
   render(){
     return(
-      <form onstyle={inputStyle}>
-        <input value="Hello"> </input>
-        <button> Search for a Bar !</button>
+      <form onSubmit={this.handleSubmit} onstyle={inputStyle}>
+        <label>
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <button type="submit"> Search for a Bar !</button>
       </form>
   );
  }
