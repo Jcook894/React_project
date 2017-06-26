@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 
+
 const mapStyle = {
   height: "500px",
-  width: "500px"
+  width: "500px",
+  margin: "auto"
 }
 const EIFFEL_TOWER_POSITION = {
   lat: 48.858608,
   lng: 2.294471
-};
+}
 
 class Maps extends Component{
 
@@ -18,7 +20,10 @@ class Maps extends Component{
      center: EIFFEL_TOWER_POSITION,
      zoom: 16
    });
+
+
   }
+
 
   render(){
     return (
