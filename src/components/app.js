@@ -4,6 +4,7 @@ import BarInfo from '../containers/bar-info';
 import Maps from '../components/google-maps';
 
 
+
 const headerStyle = {
   background: "grey",
   color: "white",

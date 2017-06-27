@@ -13,6 +13,25 @@ const EIFFEL_TOWER_POSITION = {
   lng: 2.294471
 }
 
+const x = document.getElementById("loc");
+
+const getLoc = () => {
+  if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+}
+
+const showPosition = (position) => {
+  //  x.innerHTML = "Latitude: " + position.coords.latitude +
+    //"<br>Longitude: " + position.coords.longitude;
+    alert(position.coords.latitude);
+}
+
+
+
 class Maps extends Component{
 
   componentDidMount(){
@@ -21,13 +40,15 @@ class Maps extends Component{
      zoom: 16
    });
 
+   console.log(getLoc());
+
 
   }
 
 
   render(){
     return (
-      <div ref="map" style={mapStyle}>I should be a map!</div>
+      <div id="loc" ref="map" style={mapStyle}>I should be a map!</div>
     );
   }
 }
