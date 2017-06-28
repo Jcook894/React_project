@@ -1,5 +1,6 @@
 export const SEARCH = "SEARCH";
 
 export function search(value){
-  return {type: SEARCH, value};
+  console.log("The Payload " + value);
+  return {type: SEARCH, payload: value};
 }

@@ -38,7 +38,6 @@ class SearchBar extends Component{
     this.setState({
       term: ""
     });
-    console.log(this.state);
 
   }
 

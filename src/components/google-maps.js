@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SearchBar from '../containers/search_bar';
+import { connect }from 'react-redux';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 export const lng = parseFloat(geoplugin_longitude());
@@ -21,6 +22,7 @@ class Maps extends Component{
     center: {lat: lat, lng: lng},
     zoom: INITAL_ZOOM
 
+
    });
 
    this.marker = new google.maps.Marker({
@@ -36,10 +38,16 @@ class Maps extends Component{
   }
 
   render(){
+
     return (
       <div id="loc" ref="map" style={mapStyle}>I should be a map!</div>
     );
   }
 }
 
-export default Maps;
+function mapStateToProps({ search }){
+  return  { search };
+
+}
+
+export default connect(mapStateToProps)(Maps);
