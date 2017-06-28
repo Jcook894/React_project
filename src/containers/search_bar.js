@@ -1,39 +1,52 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {search} from '../actions/index';
+
 
 const inputStyle = {
   color: "black"
 
 }
 
+
+
 class SearchBar extends Component{
   constructor(props){
     super(props);
     this.state = {
-      value: ''
+      term: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  handleChange(event){
-    this.setState({value: event.target.value});
-  }
+  onInputChange(event){
 
-  handleSubmit(event){
-    console.log("you have searched in the location of " + this.state.value);
-    event.preventDefault();
     this.setState({
-      value: ""
+      term: event.target.value
     });
+  }
+
+  onFormSubmit(event){
+    console.log("you have searched in the location of " + this.state.term);
+
+    event.preventDefault();
+
+    this.props.search(this.state.term);
+    this.setState({
+      term: ""
+    });
+    console.log(this.state);
 
   }
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit} style={inputStyle}>
+      <form onSubmit={this.onFormSubmit} style={inputStyle}>
         <label>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" value={this.state.term} onChange={this.onInputChange} />
         </label>
         <button type="submit" className="btn btn-primary"> Search for a Bar !</button>
       </form>
@@ -41,4 +54,8 @@ class SearchBar extends Component{
  }
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({search}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

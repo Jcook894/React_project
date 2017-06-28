@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import SearchBar from '../containers/search_bar';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-const lng = parseFloat(geoplugin_longitude());
-const lat = parseFloat(geoplugin_latitude());
+export const lng = parseFloat(geoplugin_longitude());
+export const lat = parseFloat(geoplugin_latitude());
 
 const INITAL_ZOOM = 12;
 
