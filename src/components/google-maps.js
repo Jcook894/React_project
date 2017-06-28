@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
+import SearchBar from '../containers/search_bar';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-const longy = parseFloat(geoplugin_longitude());
-const latty = parseFloat(geoplugin_latitude());
+const lng = parseFloat(geoplugin_longitude());
+const lat = parseFloat(geoplugin_latitude());
+
+const INITAL_ZOOM = 12;
 
 const mapStyle = {
   height: "500px",
@@ -10,23 +13,12 @@ const mapStyle = {
   margin: "auto"
 }
 
-const INITAL_POSITION = {
-  address: 'London, United Kingdom',
-  position:{
-    lat: 48.858608,
-    lng: 2.294471
-  }
-}
-
-const INITAL_ZOOM = 12;
-
-
 
 class Maps extends Component{
 
   componentDidMount(){
     this.map = new google.maps.Map(this.refs.map, {
-    center: {lat: latty, lng: longy},
+    center: {lat: lat, lng: lng},
     zoom: INITAL_ZOOM
 
    });
@@ -34,16 +26,14 @@ class Maps extends Component{
    this.marker = new google.maps.Marker({
      map: this.map,
      position: {
-       lat: latty,
-       lng: longy
+       lat: lat,
+       lng: lng
      }
    });
 
+   console.log(this.state);
 
-
-console.log(latty);
   }
-
 
   render(){
     return (
